@@ -14,7 +14,11 @@ class Game
   end
 
   def play
-    puts "#{@players[0].name}: What does 5 plus 3 equal?"
+    puts "#{@players[0].name}: What does #{plus} plus #{plus} equal?"
+  end
+
+  def plus
+    rand(1...20)
   end
 
 end
