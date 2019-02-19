@@ -1,3 +1,5 @@
+# contain all player information + how to handle player lives
+
 class Player
 
   attr_accessor :name, :live
@@ -9,4 +11,5 @@ class Player
     @live = MAX_LIVES
     @remove_live = 1
   end
+
 end
