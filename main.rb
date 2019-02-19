@@ -7,3 +7,5 @@ game = Game.new
 puts '======= WELCOME TO MATH GAME ======='
 
 game.play
+
+puts '======= GAME OVER ======='
