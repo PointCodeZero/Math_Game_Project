@@ -12,8 +12,16 @@ class Player
     @remove_live = 1
   end
 
+  def wrong_answer(player)
+    player.remove_live
+  end
+
   def remove_live
     @live -= @remove_live
+  end
+
+  def dead?
+    @live <= 0
   end
 
 end
