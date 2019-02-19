@@ -16,23 +16,27 @@ class Game
   end
 
   def play
-    # get next turn from turn_manager
-    turn = @turn_manager.next_turn
+    while (not game_over?) do
+      
+      # get next turn from turn_manager
+      turn = @turn_manager.next_turn
 
-    plus_1 = plus()
-    plus_2 = plus()
+      plus_1 = plus()
+      plus_2 = plus()
 
-    puts "#{turn.player.name}: What does #{plus_1} plus #{plus_2} equal?"
-    
-    response = gets.to_i
+      puts "#{turn.player.name}: What does #{plus_1} times #{plus_2} equal?"
+      
+      response = gets.to_i
 
-    if response == (plus_1 * plus_2)
-      puts "#{turn.player.name}: YES! You are correct."
-      # life does not change
-      puts "P1: #{3}/3 vs P2: #{3}/3"
-    else
-      puts "#{turn.player.name}: Seriously? No!"
-      # subtract 1 of life
+      if response == (plus_1 * plus_2)
+        puts "#{turn.player.name}: YES! You are correct."
+        puts "P1: #{@players[0].live}/3 vs P2: #{@players[1].live}/3"
+      else
+        puts "#{turn.player.name}: Seriously? No!"
+        turn.player.live -= 1
+        puts "P1: #{@players[0].live}/3 vs P2: #{@players[1].live}/3"
+      end
+
     end
   end
 
@@ -40,4 +44,11 @@ class Game
     rand(1...20)
   end
 
+  def game_over?
+    alive_player.count == 1
+  end
+
+  def alive_player
+    @players.select {|p| not p.dead?}
+  end
 end
