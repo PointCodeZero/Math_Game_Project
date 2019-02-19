@@ -4,13 +4,17 @@ require_relative './turn'
 
 class TurnManager
   def initialize(players) 
-    puts @players = players.dup
+    @players = players.dup
     @round_number = 0
     @current_index = 0
   end
 
   def next_turn
-    player = @players[current_index]
+    player = @players[@current_index]
+
+    if @round_number != 0
+      puts "===== NEW ROUND ====="
+    end
 
     increment_turn
 
