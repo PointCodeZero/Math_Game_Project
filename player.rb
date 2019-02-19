@@ -12,4 +12,8 @@ class Player
     @remove_live = 1
   end
 
+  def remove_live
+    @live -= @remove_live
+  end
+
 end
